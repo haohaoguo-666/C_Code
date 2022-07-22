@@ -1,0 +1,11 @@
+﻿  test01.c
+C:\Users\15192\计算机\计算机高级语言\C语言\C_project\Test_4_1\Test_4_1\test01.c(11,8): warning C4477: “scanf”: 格式字符串“%d”需要类型“int *”的参数，但可变参数 1 拥有了类型“__int64 *”
+C:\Users\15192\计算机\计算机高级语言\C语言\C_project\Test_4_1\Test_4_1\test01.c(11,8): message : 请考虑在格式字符串中使用“%lld”
+C:\Users\15192\计算机\计算机高级语言\C语言\C_project\Test_4_1\Test_4_1\test01.c(11,8): message : 请考虑在格式字符串中使用“%Id”
+C:\Users\15192\计算机\计算机高级语言\C语言\C_project\Test_4_1\Test_4_1\test01.c(11,8): message : 请考虑在格式字符串中使用“%I64d”
+C:\Users\15192\计算机\计算机高级语言\C语言\C_project\Test_4_1\Test_4_1\test01.c(12,22): warning C4244: “函数”: 从“__int64”转换到“int”，可能丢失数据
+C:\Users\15192\计算机\计算机高级语言\C语言\C_project\Test_4_1\Test_4_1\test01.c(13,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+C:\Users\15192\计算机\计算机高级语言\C语言\C_project\Test_4_1\Test_4_1\test01.c(13,9): message : 请考虑在格式字符串中使用“%zd”
+C:\Users\15192\计算机\计算机高级语言\C语言\C_project\Test_4_1\Test_4_1\test01.c(14,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+C:\Users\15192\计算机\计算机高级语言\C语言\C_project\Test_4_1\Test_4_1\test01.c(14,9): message : 请考虑在格式字符串中使用“%zd”
+  Test_4_1.vcxproj -> C:\Users\15192\计算机\计算机高级语言\C语言\C_project\Test_4_1\x64\Debug\Test_4_1.exe
