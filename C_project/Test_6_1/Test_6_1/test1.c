@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 //void menu()
 //{
@@ -165,3 +166,40 @@ int main() {
 	return 0;
 
 }
+
+
+
+
+//int Round(char* src, char* src2);
+//int main(){
+//
+//	char str[5] = "ABCD";
+//	char str2[5] = "VCDA";
+//	
+//	printf("%d", Round(str, str2));
+//	return 0;
+//}
+//int Round(char* src,char*src2)
+//{
+//	int len = strlen(src);
+//	int i = 0;
+//	
+//	for (i = 0; i < len-1; i++) {
+//	int pos = i % len; //断开位置的下标
+//	char tmp[256] = { 0 }; //更准确的话可以选择malloc len + 1个字节的空间来做这个tmp
+//
+//	strcpy(tmp, src + pos); //先将后面的全部拷过来
+//	strncat(tmp, src, pos); //然后将前面几个接上
+//		if (strcmp(tmp,src2)==0) {
+//			return 1;
+//		}
+//	}
+//	return 0;
+//}
+//int findRound(const char* src, char* find)
+//{
+//	char tmp[256] = { 0 }; //用一个辅助空间将原字符串做成两倍原字符串
+//	strcpy(tmp, src); //先拷贝一遍
+//	strcat(tmp, src); //再连接一遍
+//	return strstr(tmp, find) != NULL; //看看找不找得到
+//}
