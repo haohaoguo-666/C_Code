@@ -1,13 +1,46 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "Contact.h"
 
+//静态版本
+//void InitContact(struct Contact* pc) {
+//	
+//	assert(pc);
+//
+//	memset(pc->data, 0, 100 * sizeof(struct PeoInfo));
+//	pc->sz = 0;
+//
+//}
 
 void InitContact(struct Contact* pc) {
-	
 	assert(pc);
-
-	memset(pc->data, 0, 100 * sizeof(struct PeoInfo));
+	pc->data = (struct PeoInfo*)malloc(3 * sizeof(struct PeoInfo));
+	if (pc->data == NULL) {
+		perror("InitContact()");
+		return;
+	}
 	pc->sz = 0;
+	pc->capacity = DEFAULT_SZ;
+}
+
+int check_capacity(struct Contact* pc) {
+
+	if (pc->sz == pc->capacity) {
+		//增加容量
+		struct PeoInfo* ptr = realloc(pc->data, (pc->capacity + INC_SZ) * sizeof(struct PeoInfo));
+		if (ptr != NULL) {
+			pc->data = ptr;
+			pc->capacity += INC_SZ;
+			printf("增容成功\n");
+			return 1;
+		}
+		else {
+			perror("AddContact()");
+			return 0;
+		}
+	}
+	else {
+		return 1;
+	}
 
 }
 
@@ -15,9 +48,10 @@ void AddContact(struct Contact* pc) {
 
 	assert(pc);
 
-	if (pc->sz == MAX) {
-		printf("通讯录已经满了,无法添加数据");
+	if (check_capacity(pc) == 0) {
+
 		return;
+
 	}
 
 	//增加人的信息
@@ -138,4 +172,11 @@ int CmpByAge(const void* e1, const void* e2) {
 
 void SortContact(const struct Contact* pc) {
 	qsort(pc->data, pc->sz, sizeof(struct PeoInfo), CmpByAge);
+}
+
+void DestroyContact(struct Contact* pc) {
+	free(pc->data);
+	pc->data = NULL;
+	pc->capacity = 0;
+	pc->sz = 0;
 }

@@ -5,12 +5,24 @@
 //
 //
 //	printf("   1.add                 2.del\n");
-//	printf("   3.search             4.modfy\n");
+//	printf("   3.search             4.modify\n");
 //	printf("   5.show               6.sort\n");
 //	printf("   0.exit\n");
 //
 //
 //}
+//
+//enum choice {
+//
+//	EXIT,
+//	ADD,
+//	DEL,
+//	SEARCH,
+//	MODIFY,
+//	SHOW,
+//	SORT,
+//
+//};
 //
 //int main() {
 //	int input = 0;
@@ -29,25 +41,26 @@
 //		printf("请选择>:");
 //		scanf("%d", &input);
 //		switch (input) {
-//		case 1:
+//		case ADD:
 //			AddContact(&con);
 //			break;
-//		case 2:
+//		case DEL:
 //			DelContact(&con);
 //			break;
-//		case 3:
+//		case SEARCH:
 //			SearchContact(&con);
 //			break;
-//		case 4:
+//		case MODIFY:
 //			ModifyContact(&con);
 //			break;
-//		case 5:
+//		case SHOW:
 //			ShowContact(&con);
 //			break;
-//		case 6:
+//		case SORT:
 //			SortContact(&con);
 //			break;
-//		case 0:
+//		case EXIT:
+//			DestroyContact(&con);
 //			printf("退出了通讯录\n");
 //			break;
 //		default:
