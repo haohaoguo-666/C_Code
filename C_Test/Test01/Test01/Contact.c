@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "Contact.h"
 
+int check_capacity(struct Contact* pc);
+
 //静态版本
 //void InitContact(struct Contact* pc) {
 //	
@@ -11,6 +13,27 @@
 //
 //}
 
+void LoadContact(struct Contact* pc) {
+	//打开文件
+	FILE* pfr = fopen("data.txt", "rb");
+	if (pfr == NULL) {
+		perror("LoadContact::fopen");
+		return;
+	}
+	//读文件
+	struct PeoInfo tmp = { 0 };
+	while (fread(&tmp, sizeof(struct PeoInfo), 1, pfr)) {
+		//考虑增加容量
+		check_capacity(pc);
+		pc->data[pc->sz] = tmp;
+		pc->sz++; 
+	}
+	
+	//关闭文件
+	fclose(pfr);
+	pfr = NULL;
+}
+
 void InitContact(struct Contact* pc) {
 	assert(pc);
 	pc->data = (struct PeoInfo*)malloc(3 * sizeof(struct PeoInfo));
@@ -20,6 +43,8 @@ void InitContact(struct Contact* pc) {
 	}
 	pc->sz = 0;
 	pc->capacity = DEFAULT_SZ;
+	//加载文件中的信息到通讯录中
+	LoadContact(pc);
 }
 
 int check_capacity(struct Contact* pc) {
@@ -179,4 +204,22 @@ void DestroyContact(struct Contact* pc) {
 	pc->data = NULL;
 	pc->capacity = 0;
 	pc->sz = 0;
+}
+
+void SaveContact(struct Contact* pc) {
+	//打开文件
+	FILE *pfw  = fopen("data.txt", "wb");
+	if (pfw == NULL) {
+		perror("SaveContact::fopen");
+		return ;
+	}
+	//写文件
+	int i = 0;
+	for (i = 0; i < pc->sz; i++) {
+		fwrite(pc->data+i,sizeof(struct PeoInfo),1,pfw);
+	}
+
+	//关闭文件
+	fclose(pfw);
+	pfw = NULL;
 }

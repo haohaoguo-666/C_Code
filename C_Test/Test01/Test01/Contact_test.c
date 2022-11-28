@@ -60,6 +60,7 @@
 //			SortContact(&con);
 //			break;
 //		case EXIT:
+//			SaveContact(&con);
 //			DestroyContact(&con);
 //			printf("退出了通讯录\n");
 //			break;

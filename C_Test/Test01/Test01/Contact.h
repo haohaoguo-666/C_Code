@@ -59,3 +59,9 @@ void SortContact(const struct Contact*pc);
 
 //销毁通讯录
 void DestroyContact(const struct Contact* pc);
+
+//保存通讯录
+void SaveContact(struct Contact* pc);
+
+//加载文件的信息到通讯录
+void LoadContact(struct Contact* pc);
