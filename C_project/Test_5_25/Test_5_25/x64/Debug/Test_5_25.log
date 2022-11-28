@@ -1,3 +1,0 @@
-﻿  test01.c
-C:\Users\15192\Desktop\计算机\计算机高级语言\C语言\C_project\Test_5_25\Test_5_25\test01.c(7,20): warning C4267: “=”: 从“size_t”转换到“unsigned int”，可能丢失数据
-  Test_5_25.vcxproj -> C:\Users\15192\Desktop\计算机\计算机高级语言\C语言\C_project\Test_5_25\x64\Debug\Test_5_25.exe

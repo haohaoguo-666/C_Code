@@ -1,5 +1,0 @@
-﻿  test01.c
-C:\Users\15192\Desktop\计算机\计算机高级语言\C语言\C_project\Test_5_21\Test_5_21\test01.c(96,8): warning C4477: “scanf”: 格式字符串“%d”需要类型“int *”的参数，但可变参数 2 拥有了类型“double *”
-C:\Users\15192\Desktop\计算机\计算机高级语言\C语言\C_project\Test_5_21\Test_5_21\test01.c(96,8): warning C4477: “scanf”: 格式字符串“%d”需要类型“int *”的参数，但可变参数 3 拥有了类型“double *”
-C:\Users\15192\Desktop\计算机\计算机高级语言\C语言\C_project\Test_5_21\Test_5_21\test01.c(96,8): warning C4477: “scanf”: 格式字符串“%d”需要类型“int *”的参数，但可变参数 4 拥有了类型“double *”
-  Test_5_21.vcxproj -> C:\Users\15192\Desktop\计算机\计算机高级语言\C语言\C_project\Test_5_21\x64\Debug\Test_5_21.exe
