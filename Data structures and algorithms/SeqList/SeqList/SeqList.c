@@ -7,7 +7,7 @@ void SLInit(SL* pc) {
 }
 
 void SLPushBack(SL* pc, DataType k) {
-	//À©ÈÝ
+	//æ‰©å®¹
 	if (pc->size == pc->capacity) {
 		int newCapacity = pc->capacity == 0 ? 4 : pc->capacity * 2;
 		DataType* temp = (DataType*)realloc(pc->a, sizeof(DataType) * newCapacity);
@@ -20,7 +20,7 @@ void SLPushBack(SL* pc, DataType k) {
 			pc->capacity = newCapacity;
 		}
 	}
-	//Î²Ôö
+	//å°¾å¢ž
 	pc->a[pc->size] = k;
 	pc->size++;
 
