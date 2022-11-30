@@ -8,9 +8,21 @@ void testSeqList() {
 	SLPushBack(&sl, 8);
 	SLPushBack(&sl, 9);
 	SLPushBack(&sl, 10);
-	SLPushBack(&sl, 11);
-	SLPushBack(&sl, 12);
-	SLPushBack(&sl, 13);
+
+
+
+	SLInsert(&sl, 1, 1);
+	SLInsert(&sl, 2, 2);
+	SLInsert(&sl, 3, 3);
+	SLInsert(&sl, 4, 4);
+	SLErase(&sl, 1);
+	SLErase(&sl, 2);
+	SLErase(&sl, 3);
+
+
+
+
+
 
 	SLPrint(&sl);
 
