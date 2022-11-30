@@ -43,6 +43,7 @@ void SLDestroy(SL* pc) {
 	pc->capacity = 0;
 }
 
+<<<<<<< HEAD
 void SLPrint(SL* pc) {
 	assert(pc);
 	int i = 0;
@@ -56,6 +57,10 @@ void SLPrint(SL* pc) {
 
 void SLCheckCapacity(SL* pc) {
 	//扩容
+=======
+void SLPushBack(SL* pc, DataType k) {
+	//鎵╁
+>>>>>>> 326923ce57611e59b8a27c6f9d9f356169710b4a
 	if (pc->size == pc->capacity) {
 		int newCapacity = pc->capacity == 0 ? 4 : pc->capacity * 2;
 		DataType* temp = (DataType*)realloc(pc->a, sizeof(DataType) * newCapacity);
@@ -68,12 +73,18 @@ void SLCheckCapacity(SL* pc) {
 			pc->capacity = newCapacity;
 		}
 	}
+<<<<<<< HEAD
 }
 
 //O(N*N)
 void SLPushFront(SL* pc, DataType x) {
 	//assert(pc);
 	//SLCheckCapacity(pc);
+=======
+	//灏惧
+	pc->a[pc->size] = k;
+	pc->size++;
+>>>>>>> 326923ce57611e59b8a27c6f9d9f356169710b4a
 
 	////挪动数据：整体后移，再头部插入
 	//int end = pc->size - 1;
