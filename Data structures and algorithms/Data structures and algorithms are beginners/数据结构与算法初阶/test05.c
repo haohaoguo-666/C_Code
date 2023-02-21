@@ -42,59 +42,61 @@
 //思路二
 //三指针 
 //版本一
-void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
-	int src = n - 1;
-	int des = m - 1;
-	int	 back = m + n - 1;
-	while (back >= 0) {
-		//nums2元素大于nums1元素
-		if (nums2[src] > nums1[des]) {
-			nums1[back--] = nums2[src--];
-			if (src < 0) {
-				while (des >= 0) {
-					nums1[back--] = nums1[des--];
-				}
-			}
-		}
-		//nums2元素小于nums元素
-		else {
-			nums1[back--] = nums1[des--];
-			if (des < 0) {
-				while ( src >= 0) {
-					nums1[back--] = nums2[src--];
-				}
-			}
-		}
-	}
-}
+//void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
+//	int src = n - 1;
+//	int des = m - 1;
+//	int	 back = m + n - 1;
+//	while (back >= 0) {
+//		//nums2元素大于nums1元素
+//		if (nums2[src] > nums1[des]) {
+//			nums1[back--] = nums2[src--];
+//			if (src < 0) {
+//				while (des >= 0) {
+//					nums1[back--] = nums1[des--];
+//				}
+//			}
+//		}
+//		//nums2元素小于nums元素
+//		else {
+//			nums1[back--] = nums1[des--];
+//			if (des < 0) {
+//				while ( src >= 0) {
+//					nums1[back--] = nums2[src--];
+//				}
+//			}
+//		}
+//	}
+//}
 //版本二
-void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
-	int src = n - 1;
-	int des = m - 1;
-	int	 back = m + n - 1;
-	while (src >=0 && des >=0) {
-		//nums2元素大于nums1元素
-		if (nums2[src] > nums1[des]) {
-			nums1[back--] = nums2[src--];
-		}
-		//nums2元素小于nums元素
-		else {
-			nums1[back--] = nums1[des--];
-		}
-	}
-	while (src >= 0) {
-		nums1[back--] = nums2[src--];
-	}
-}
-
-int main() {
-	int arr1[] = {1,2,3,0,0,0};
-	int arr2[] = { 2,5,7 };
-	merge(arr1, 6, 3, arr2, 3, 3);
-	int i = 0;
-	for (i = 0; i < 6; i++) {
-		printf("%d ", arr1[i]);
-	}
+//void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
+//	int src = n - 1;
+//	int des = m - 1;
+//	int	 back = m + n - 1;
+//	while (src >=0 && des >=0) {
+//		//nums2元素大于nums1元素
+//		if (nums2[src] > nums1[des]) {
+//			nums1[back--] = nums2[src--];
+//		}
+//		//nums2元素小于nums元素
+//		else {
+//			nums1[back--] = nums1[des--];
+//		}
+//	}
+//	while (src >= 0) {
+//		nums1[back--] = nums2[src--];
+//	}
+//}
 
 
-}
+
+//int main() {
+//	int arr1[] = {1,2,3,0,0,0};
+//	int arr2[] = { 2,5,7 };
+//	merge(arr1, 6, 3, arr2, 3, 3);
+//	int i = 0;
+//	for (i = 0; i < 6; i++) {
+//		printf("%d ", arr1[i]);
+//	}
+//
+//
+//}

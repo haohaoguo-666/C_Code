@@ -8,3 +8,4 @@
 //    printf("%x\n", a);
 //    return 0;
 //}
+//int a = 10;

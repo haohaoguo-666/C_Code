@@ -7,7 +7,8 @@
 //输入：[3, 0, 1]
 //输出：2
 
-
+//思路一
+//求和相减
 #define _CRT_SECURE_NO_WARNINGS 1
 
 int missingNumber(int* nums, int numsSize) {
@@ -19,6 +20,8 @@ int missingNumber(int* nums, int numsSize) {
     return (numsSize + 1) * (numsSize + 0) / 2 - sum;
 }
 
+//思路二
+//异或
 //int missingNumber(int* nums, int numsSize) {
 //    int i = 0;
 //    int sum = 0;

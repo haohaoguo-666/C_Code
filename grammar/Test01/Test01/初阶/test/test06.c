@@ -11,3 +11,12 @@
 //    }
 //    return 0;
 //}
+
+//# include <stdio.h>
+//
+//extern int a;
+//
+//int main()
+//{
+//	printf("%d\n", a);
+//}
