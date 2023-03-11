@@ -1,156 +1,157 @@
 #include "SeqList.h"
 
-void SLInit(SL* pc) {
-	assert(pc);
+void SLPrint(SL* ps)
+{
+	assert(ps);//断言
 
-	pc->a = NULL;
-	pc->size = 0;
-	pc->capacity = 0;
-}
-
-//O(N )
-void SLPushBack(SL* pc, DataType x) {
-	assert(pc);
-
-	SLCheckCapacity(pc);
-	//尾增
-	/*pc->a[pc->size] = k;
-	pc->size++;*/
-	SLInsert(pc, pc->size, x);
-
-}
-
-void SLPopBack(SL* pc) {
-	assert(pc);
-
-	//温柔的检查
-	/*if (pc->size == 0) {
-		return;
-	}*/
-	//暴力的检查
-	/*assert(pc->size > 0);
-
-	pc->size--;*/
-	SLErase(pc, pc->size - 1);
-}
-
-void SLDestroy(SL* pc) {
-	assert(pc);
-
-	free(pc->a);
-	pc->a = NULL;
-	pc->size = 0;
-	pc->capacity = 0;
-}
-
-<<<<<<< HEAD
-void SLPrint(SL* pc) {
-	assert(pc);
-	int i = 0;
-	for (i = 0; i < pc->size; i++) {
-		printf("%d ", pc->a[i]);
-	}
+	for (int i = 0; i < ps->size; i++)
+		printf("%d ", ps->a[i]);
 	printf("\n");
 }
 
+void SLInit(SL* ps)
+{
+	assert(ps);
+
+	ps->a = NULL;
+	ps->size = 0;
+	ps->capacity = 0;
+}
 
 
-void SLCheckCapacity(SL* pc) {
-	//扩容
-=======
-void SLPushBack(SL* pc, DataType k) {
-	//鎵╁
->>>>>>> 326923ce57611e59b8a27c6f9d9f356169710b4a
-	if (pc->size == pc->capacity) {
-		int newCapacity = pc->capacity == 0 ? 4 : pc->capacity * 2;
-		DataType* temp = (DataType*)realloc(pc->a, sizeof(DataType) * newCapacity);
-		if (temp == NULL) {
+void SLCheckCapacity(SL* ps)
+{
+	assert(ps);
+
+	if (ps->size == ps->capacity)//扩容
+	{
+		int newcapacity = ps->capacity == 0 ? 4 : 2 * ps->capacity;//如果容量是0则增加到4，否则乘2
+		SLDataType* tmp = (SLDataType*)realloc(ps->a, sizeof(SLDataType) * newcapacity);
+		if (tmp == NULL)
+		{
 			perror("realloc fail");
-			exit(-1);
+			exit(-1);//退出程序
 		}
-		else {
-			pc->a = temp;
-			pc->capacity = newCapacity;
-		}
+		ps->a = tmp;
+		ps->capacity = newcapacity;
 	}
-<<<<<<< HEAD
 }
 
-//O(N*N)
-void SLPushFront(SL* pc, DataType x) {
-	//assert(pc);
-	//SLCheckCapacity(pc);
-=======
-	//灏惧
-	pc->a[pc->size] = k;
-	pc->size++;
->>>>>>> 326923ce57611e59b8a27c6f9d9f356169710b4a
+void SLDestroy(SL* ps)
+{
+	assert(ps);
 
-	////挪动数据：整体后移，再头部插入
-	//int end = pc->size - 1;
-	//for (; end >= 0; end--) {
-	//	pc->a[end+1] = pc->a[end];
-	//}
-	//pc->a[0] = x;
-	//pc->size++;
-	SLInsert(pc, 0, x);
-}
-
-void SLPopFront(SL* pc) {
-	assert(pc);
-	//越界写可能会被检查出来——抽查
-	//越界写基本不会被检查出来
-	//不同编译器查越界方式不同
-	//往往会在数组的后面定义值，通过值的改变来判断是否越界
-
-	//顺序表为空了，不要再头删了
-
-	assert(pc->size > 0);
-
-	/*int begin = 1;
-	while (begin < pc->size) {
-		pc->a[begin - 1] = pc->a[begin];
-		begin++;
+	if (ps->a != NULL)
+	{
+		free(ps->a);//可以检查出越界
+		ps->a = NULL;
+		ps->size = ps->capacity = 0;
+		
 	}
-	pc->size--;*/
-	SLErase(pc, 0);
 }
 
-void SLInsert(SL* pc, int pos, DataType x) {
-	assert(pc);
-	assert(pos >= 0);
-	assert(pos <= pc->size);
+//O(1)
+void SLPushBack(SL* ps, SLDataType x)
+{
+	assert(ps);
 
-	SLCheckCapacity(pc);
-	int end = pc->size;
-	while (end > pos) {
-		pc->a[end] = pc->a[end-1];
+	
+	SLCheckCapacity(ps);
+
+	ps->a[ps->size] = x;
+	ps->size++;
+	//SLInsert(ps, p->size, x);
+}
+
+void SLPopBack(SL* ps)
+{
+	//温柔检查
+	//if (ps->size == 0)return;
+	
+	//暴力检查
+	assert(ps);
+	assert(ps->size);
+
+	ps->size--;
+	//SLErase(ps, ps->size - 1)
+
+}
+
+//O(N)
+void SLPushFront(SL* ps, SLDataType x)
+{
+	assert(ps);
+
+	SLCheckCapacity(ps);
+
+	int end = ps->size - 1;
+	while(end >= 0)
+	{
+		ps->a[end + 1] = ps->a[end];
 		end--;
 	}
-	pc->a[end] = x;
-	pc->size++;
-
+	ps->a[0] = x;
+	ps->size++;
+	//SLInsert(ps, 0, x); 复用
 }
 
-void SLErase(SL* pc, int pos) {
-	assert(pc);
+void SLPopFront(SL* ps)
+{
+	assert(ps);
+	assert(ps->size);
+
+	int begin = 0;
+	while (begin < ps->size - 1)
+	{
+		ps->a[begin] = ps->a[begin + 1];
+		begin++;
+	}
+	ps->size--;
+	//SLErase(ps, 0);
+}
+
+void SLInsert(SL* ps, int pos, SLDataType x)
+{
+	assert(ps);
+	assert(ps->size >= pos);
 	assert(pos >= 0);
-	assert(pos < pc->size);
-	int begin = pos;
-	while (begin < pc->size-1) {
-		pc->a[begin] = pc->a[begin+1];
-			begin++;
+	SLCheckCapacity(ps);
+
+	int end = ps->size - 1;
+	while (end >= pos)
+	{
+		ps->a[end+1] = ps->a[end];
+		end--;
 	}
-	pc->size--;
+	ps->a[pos] = x;
+	ps->size++;
 }
 
-int SLFind(SL* pc, DataType x,int begin) {
-	assert(pc);
-	
-	for (int i = begin; i < pc->size; i++) {
-		if (pc->a[i] == x) {
-			return i;
-		}
+void SLErase(SL* ps, int pos)
+{
+	assert(ps);
+	assert(ps->size > pos);
+	assert(pos >= 0);
+
+	int begin = pos;
+	while (begin < ps->size - 1)
+	{
+		ps->a[begin] = ps->a[begin + 1];
+		begin++;
 	}
+	ps->size--;
+}
+
+
+int SLFind(SL* ps, int x, int begin)
+{
+	assert(ps);
+	 
+	for (int i = begin; i < ps->size; i++)//从begin位置开始查询
+	{
+		if (ps->a[i] == x)
+			return i;
+	}
+
 	return -1;
 }
