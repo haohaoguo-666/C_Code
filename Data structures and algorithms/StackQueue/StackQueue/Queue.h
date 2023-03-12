@@ -9,7 +9,7 @@ typedef int QDataType;
 
 typedef struct QueueNode
 {
-	QDataType x;
+	QDataType data;
 	struct QueueNode* next;
 }QNode;
 
@@ -17,13 +17,14 @@ typedef struct Queue
 {
 	QNode* head;
 	QNode* tail;
+	int size;
 }Queue;
 
 //初始化
 void QueueInit(Queue* pq);
 
 //销毁
-void QueueDestroy(Queue* pq);
+void QueueDestory(Queue* pq);
 
 //入队
 void QueuePush(Queue* pq, QDataType x);
