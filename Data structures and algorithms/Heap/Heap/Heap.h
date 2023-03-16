@@ -5,6 +5,8 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <string.h>
+#include <time.h>
+
 typedef int HPDataType;
 
 typedef struct Heap
@@ -49,3 +51,6 @@ int HeapSize(HP* php);
 
 //еп©у
 bool HeapEmpty(HP* php);
+
+//╤яеепР
+void HeapSort(HPDataType* a, int n);

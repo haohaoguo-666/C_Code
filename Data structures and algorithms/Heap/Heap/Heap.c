@@ -4,7 +4,7 @@
 void HeapCreate(HP* php, HPDataType* a, int n)
 {
 	assert(php);
-	php->a = (HPDataType*)malloc(php->a, sizeof(HPDataType) * n);
+	php->a = (HPDataType*)malloc(sizeof(HPDataType) * n);
 	assert(php->a);
 	memcpy(php->a, a, sizeof(HPDataType) * n);
 	php->size = php->capacity = n;
@@ -99,12 +99,12 @@ void AdjustDown(HPDataType* a, int parent, int size)
 	while (child < size)
 	{
 		//确认child指向大的哪个孩子
-		if (child + 1 < size && a[child + 1] > a[child])
+		if (child + 1 < size && a[child + 1] < a[child])
 		{
 			++child;
 		}
 
-		if (a[child] > a[parent])
+		if (a[child] < a[parent])
 		{//孩子大于父亲，交换，继续向下调整
 			swap(&a[child], &a[parent]);
 			parent = child;
@@ -151,3 +151,28 @@ bool HeapEmpty(HP* php)
 }
 
 
+
+// O(N * logN)
+void HeapSort(HPDataType* a, int n)
+{
+	//向上调整堆 -- O(N*logN)
+	//降序
+	for (int i = 0; i < n; i++)
+	{
+		AdjustUp(a, i);
+	}
+
+	//向下调整堆 -- O(N)
+	for (int i = (n - 1 - 1) / 2; i >= 0; i--)
+	{
+		AdjustDown(a, i, n);
+	}
+	int end = n - 1;
+	while (end)
+	{
+		//升序 -- O(N * logN)
+		swap(&a[0], &a[end]);
+		AdjustDown(a, 0, end);
+		end--;
+	}
+}
