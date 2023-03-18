@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "Binary tree.h"
+#include "Queue.h"
 
 int main()
 {
@@ -32,6 +33,10 @@ int main()
 	printf("%d", TreeHeight(n1));
 	printf("\n");
 	printf("%d", TreeKlevelSize(n1, 4));
+	printf("\n");
+	printf("%d", TreeFind(n1, 4)->data);
+	printf("\n");
+	LevelOrder(n1);
 	
 
 

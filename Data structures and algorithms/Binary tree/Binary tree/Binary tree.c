@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "Binary tree.h"
+#include "Queue.h"
 
 void PrevOrder(BTNode* root)
 {
@@ -91,3 +92,41 @@ int TreeKlevelSize(BTNode* root, int k)
 		+ TreeKlevelSize(root->right, k-1);
 }
 
+BTNode* TreeFind(BTNode* root, BTDataType x)
+{
+	if (!root) return NULL;
+
+	if (root->data == x) return root;
+	
+	BTNode* leftnode = TreeFind(root->left, x);
+	if (leftnode) return leftnode;
+
+	BTNode* rightnode = TreeFind(root->right, x);
+	if (rightnode) return rightnode;	
+	
+	return NULL;
+}
+
+void LevelOrder(BTNode* root)
+{
+	Queue q;
+	QueueInit(&q);
+	if (root) QueuePush(&q, root);
+	while (!QueueEmpty(&q))
+	{
+		BTNode* front = QueueFront(&q);
+		printf("%d ", front->data);
+		QueuePop(&q);
+
+		if (front->left)
+		{
+			QueuePush(&q, front->left);
+		}
+
+		if (front->right)
+		{
+			QueuePush(&q, front->right);
+		}
+	}
+	QueueDestory(&q);
+}

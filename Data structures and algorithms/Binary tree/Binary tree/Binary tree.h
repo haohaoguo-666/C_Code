@@ -36,3 +36,8 @@ int TreeHeight(BTNode* root);
 //求第k层的节点个数
 int TreeKlevelSize(BTNode* root, int k);
 
+//二叉树查找值为x的节点
+BTNode* TreeFind(BTNode* root, BTDataType x);
+
+//层序遍历
+void LevelOrder(BTNode* root);
