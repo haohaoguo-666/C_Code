@@ -130,3 +130,53 @@ void LevelOrder(BTNode* root)
 	}
 	QueueDestory(&q);
 }
+
+bool TreeComplete(BTNode* root)
+{
+	Queue q;
+	QueueInit(&q);
+	if (root)
+		QueuePush(&q, root);
+
+	while (!QueueEmpty(&q))
+	{
+		BTNode* front = QueueFront(&q);
+		QueuePop(&q);
+
+		if (front == NULL)//遇到空就可以开始判断
+		{
+			break;
+		}
+		else
+		{
+			QueuePush(&q, front->left);
+			QueuePush(&q, front->right);
+		}
+
+	}
+
+	while (!QueueEmpty(&q))
+	{//出现空后，如果后面全是空的话就是完全二叉树
+		BTNode* front = QueueFront(&q);
+		QueuePop(&q);
+		if (front != NULL)
+		{
+			QueueDestory(&q);
+			return false;
+		}
+	}
+	QueueDestory(&q);
+	return true;
+}
+
+void TreeDestory(BTNode* root)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+
+	TreeDestory(root->left);
+	TreeDestory(root->right);
+	free(root);
+}

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <stdbool.h>
 
 typedef  int BTDataType;
 
@@ -41,3 +42,9 @@ BTNode* TreeFind(BTNode* root, BTDataType x);
 
 //层序遍历
 void LevelOrder(BTNode* root);
+
+//判断二叉树是否为完全二叉树
+bool TreeComplete(BTNode* root);
+
+//销毁二叉树
+void TreeDestory(BTNode* root);
