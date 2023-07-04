@@ -147,3 +147,104 @@
 //	return 0;
 //} 
 ////结论：因为精度损失问题，两个浮点数，绝对不能使用 == 进行相等比较
+
+//代码调整后
+//#include <stdio.h>
+//#include <math.h> //必须包含math.h,要不然无法使用fabs
+//#include <float.h> //必须包含，要不然无法使用系统精度
+//#include <windows.h>
+//int main()
+//{
+//	double x = 1.0;
+//	double y = 0.1;
+//	printf("%.50f\n", x - 0.9);
+//	printf("%.50f\n", y);
+//	if (fabs((x - 0.9) - y) < DBL_EPSILON) { //原始数据是浮点数，我们就用DBL_EPSILON
+//		printf("you can see me!\n");
+//	} 
+//	else{
+//		printf("oops\n");
+//	} 
+//	system("pause");
+//	return 0;
+//} 
+////两个精度定义
+//#define DBL_EPSILON 2.2204460492503131e-016 /* smallest such that 1.0+DBL_EPSILON != 1.0
+//*/
+//#define FLT_EPSILON 1.192092896e-07F /* smallest such that 1.0+FLT_EPSILON != 1.0
+//*/
+//XXX_EPSILON是最小误差, 是：XXX_EPSILON + n不等于n的最小的正数。
+//EPSILON这个单词翻译过来是'ε'的意思，数学上，就是极小的正数
+
+//最终代码
+//#include <stdio.h>
+//#include <math.h>
+//#include <float.h>
+//#include <windows.h>
+//int main()
+//{
+//	double x = 0.00000000000000000000001;
+//	//if (fabs(x-0.0) < DBL_EPSILON){ //写法1
+//	//if (fabs(x) < DBL_EPSILON){ //写法2
+//	if (x > -DBL_EPSILON && x < DBL_EPSILON) { //书中写法
+//		printf("you can see me!\n");
+//	} 
+//	else{
+//		printf("oops\n");
+//	} 
+//	system("pause");
+//	return 0;
+//} 
+//	//x > -DBL_EPSILON && x < DBL_EPSILON: 为何不是 >= && <= 呢？
+//	//个人看法：XXX_EPSILON是最小误差,是：XXX_EPSILON+n不等于n的最小的正数。
+//	//XXX_EPSILON+n不等于n的最小的正数: 有很多数字+n都可以不等于n，但是XXX_EPSILON是最小的，but，XXX_EPSILON依旧是引起不等的一员。
+//	//换句话说：fabs(x) <= DBL_EPSILON(确认x是否是0的逻辑)，如果=，就说明x本身，已经能够引起其他和他+-的数据本身的变化了，这个不符合0的概念
+
+//int main()
+//{
+//	//类型不同，数字是一样的：0
+//	printf("%d\n", 0);
+//	printf("%d\n", NULL);
+//	printf("%d\n", '\0');
+//}
+
+////测试代码换一下
+//int main()
+//{
+//	int x = 0;
+//	int y = 1;
+//	if (10 == x)
+//		if (11 == y)
+//			printf("hello bit\n");
+//		else
+//			printf("hello world!\n");
+//	system("pause");
+//	return 0;
+//}
+
+////推荐写法
+//int main()
+//{
+//	int x = 0;
+//	int y = 1;
+//	if (10 == x)
+//	{
+//		if (11 == y)
+//		{
+//			printf("hello bit\n");
+//		}
+//	} 
+//	else
+//	{
+//		printf("hello world!\n");
+//	} 
+//	system("pause");
+//	return 0;
+//}
+
+int main()
+{
+	int flag = 0;
+	if (flag);
+		printf("hello world");
+}
