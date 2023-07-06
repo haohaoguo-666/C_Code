@@ -25,10 +25,10 @@ void HeapInit(HP* php);
 //销毁
 void HeapDestory(HP* php);
 
-//插入，保持还是一个堆
+//插入，向上调整，保持还是一个堆 O(logN)
 void HeapPush(HP* php, HPDataType x);
 
-//删除堆顶的数据，保持还是一个堆
+//删除堆顶的数据，向下调整，保持还是一个堆 O(logN)
 void HeapPop(HP* php);
 
 //取堆顶 O(logN)

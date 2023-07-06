@@ -36,7 +36,7 @@ void HeapDestory(HP* php)
 }
 
 void HeapPush(HP* php, HPDataType x)
-{
+{//插入节点，为了维护堆，会影响节点的祖先
 	assert(php);
 
 	if(php->capacity == php->size)
@@ -59,6 +59,7 @@ void HeapPop(HP* php)
 {
 	assert(php);
 	assert(php->size > 0);
+	//根位置跟最后一个位置交换，方便删除
 	swap(&php->a[0], &php->a[--php->size]);
 
 	AdjustDown(php->a, 0, php->size);
@@ -76,7 +77,7 @@ HPDataType HeapTop(HP* php)
 
 
 void AdjustUp(HPDataType* a, int child)
-{
+{ 
 	int parent = (child - 1) / 2;
 	while (child > 0)
 	{
@@ -94,7 +95,7 @@ void AdjustUp(HPDataType* a, int child)
 }
 
 void AdjustDown(HPDataType* a, int parent, int size)
-{
+{//升序建大堆，降序建小堆
 	int child = parent * 2 + 1;
 	while (child < size)
 	{
@@ -105,7 +106,7 @@ void AdjustDown(HPDataType* a, int parent, int size)
 		}
 
 		if (a[child] < a[parent])
-		{//孩子大于父亲，交换，继续向下调整
+		{//孩子大于父亲，交换，继续向下调整，建大堆
 			swap(&a[child], &a[parent]);
 			parent = child;
 			child = parent * 2 + 1;
@@ -157,10 +158,10 @@ void HeapSort(HPDataType* a, int n)
 {
 	//向上调整堆 -- O(N*logN)
 	//降序
-	for (int i = 0; i < n; i++)
+	/*for (int i = 0; i < n; i++)
 	{
 		AdjustUp(a, i);
-	}
+	}*/
 
 	//向下调整堆 -- O(N)
 	for (int i = (n - 1 - 1) / 2; i >= 0; i--)

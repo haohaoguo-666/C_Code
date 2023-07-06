@@ -116,6 +116,7 @@ void LevelOrder(BTNode* root)
 	{
 		BTNode* front = QueueFront(&q);
 		printf("%d ", front->data);
+		//队列出上一层，带下一层
 		QueuePop(&q);
 
 		if (front->left)
