@@ -88,14 +88,45 @@ void test()
 void TestQuickSort()
 {
 	int a[] = { 1, 45, 56, 12, 9, 88, 100, 111, 454, 23};
-	QuickSort(a, 0, sizeof(a) / sizeof(int) - 1);
+	QuickSortNonR(a, 0, sizeof(a) / sizeof(int) - 1);
+	PrintArray(a, sizeof(a) / sizeof(int));
+}
+
+void TestQuickSort1()
+{
+	int a[] = { 1, 45, 56, 12, 9, 88, 100, 111, 454, 23 };
+	QuickSort1(a, 0, sizeof(a) / sizeof(int) - 1);
+	PrintArray(a, sizeof(a) / sizeof(int));
+}
+
+void TestMergeSort()
+{
+	int a[] = { 1, 45, 56, 12, 9, 88, 100, 111, 454, 23 , 823, 23};
+	MergeSort(a, sizeof(a) / sizeof(a[0]));
+	PrintArray(a, sizeof(a) / sizeof(int));
+}
+
+void TestMergeSortNonR()
+{
+	int a[] = { 1, 45, 56, 12, 9, 88, 100, 111, 33, 73};
+	MergeSortNonR(a, sizeof(a) / sizeof(a[0]));
+	PrintArray(a, sizeof(a) / sizeof(int));
+}
+
+void TestCountSort()
+{
+	int a[] = { 1, 45, -56, 12, 9, 88, 100, 111, 33, 73 };
+	CountSort(a, sizeof(a) / sizeof(a[0]));
 	PrintArray(a, sizeof(a) / sizeof(int));
 }
 
 int main()
 {
 	//test();
-	TestQuickSort();
-	
+	//TestQuickSort();
+	//TestQuickSort1();
+	//TestMergeSort();
+	//TestMergeSortNonR();
+	TestCountSort();
 }
 

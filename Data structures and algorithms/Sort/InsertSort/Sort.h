@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 // 排序实现的接口
@@ -34,11 +35,15 @@ int PartSort3(int* a, int begin, int end);
 
 void QuickSort(int* a, int left, int right);
 
+//三路划分
+void QuickSort1(int* a, int begin, int end);
+
+
 // 快速排序 非递归实现
-void QuickSortNonR(int* a, int left, int right);
+void QuickSortNonR(int* a, int begin, int end);
 
 // 归并排序递归实现
-void MergeSort(int* a, int n);
+void MergeSort(int* a, int n); 
 
 // 归并排序非递归实现
 void MergeSortNonR(int* a, int n);
